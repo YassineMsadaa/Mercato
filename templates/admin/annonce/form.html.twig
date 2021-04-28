@@ -1,0 +1,19 @@
+
+{{ form_start(form) }}
+    <div class="row form-group">
+    <!--{'attr': {'class': 'task_field'}}-->
+        {{ form_label(form.title, 'Titre') }}
+        {{ form_errors(form)}}
+        {{ form_widget(form.title) }}
+    </div>
+    <div class="row form-group">
+        {{ form_label(form.contenu, 'Contenu') }}
+        {{ form_widget(form.contenu) }}
+    </div>
+    <div class="row form-group">
+        {{ form_label(form.imageFile, 'Image') }}
+        {{ form_widget(form.imageFile) }}
+    </div>
+{{ form_widget(form) }}
+<button class="theme_button wide_button">{{ button| default('Creer') }}</button>
+{{ form_end(form) }}

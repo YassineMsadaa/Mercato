@@ -1,0 +1,32 @@
+.testons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.supprimer_admin{
+    background-color: #d9534f !important;
+    border-color: #d43f3a !important;
+}
+
+.supprimer_admin:hover{
+    color:#d43f3a !important;
+    background-color: #efefff !important;
+}
+
+.center_form{
+display: flex;
+justify-content: center;
+}
+
+.center_form label{
+    color: black !important;
+}
+
+.center_form .invalid-feedback{
+    color : #d43f3a !important;
+}
+
+.img_admin{
+    width: 100px !important;
+}
+
