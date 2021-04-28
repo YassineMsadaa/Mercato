@@ -43,10 +43,10 @@ class Annonce
      * @ORM\Column(type="string", length=255)
      * @var string | null
      */
-    private $filename;
+    private $image;
 
     /**
-     * @Vich\UploadableField(mapping="annonce_image", fileNameProperty="filename")
+     * @Vich\UploadableField(mapping="annonce_image", fileNameProperty="image")
      * @var File | null
      */
     private $imageFile;
@@ -66,6 +66,11 @@ class Annonce
      * @ORM\Column(type="date")
      */
     private $datemodif;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $idUser;
 
 
 
@@ -105,18 +110,18 @@ class Annonce
     /**
      * @return string|null
      */
-    public function getFilename(): ?string
+    public function getImage(): ?string
     {
-        return $this->filename;
+        return $this->image;
     }
 
     /**
-     * @param string|null $filename
+     * @param string|null $image
      * @return Annonce
      */
-    public function setFilename(?string $filename): Annonce
+    public function setImage(?string $image): Annonce
     {
-        $this->filename = $filename;
+        $this->image = $image;
         return $this;
     }
 
@@ -167,6 +172,18 @@ class Annonce
     public function setDatemodif(\DateTimeInterface $datemodif): self
     {
         $this->datemodif = $datemodif;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?int
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?int $idUser): self
+    {
+        $this->idUser = $idUser;
 
         return $this;
     }
