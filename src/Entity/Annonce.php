@@ -32,7 +32,7 @@ class Annonce
      *      maxMessage = "Le titre doit contenir au maximum {{ limit }} caractères"
      * )
      */
-    private $title;
+    private $titre;
 
     /**
      * @ORM\Column(type="text")
@@ -79,14 +79,14 @@ class Annonce
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getTitre(): ?string
     {
-        return $this->title;
+        return $this->titre;
     }
 
-    public function setTitle(string $title): self
+    public function setTitre(string $titre): self
     {
-        $this->title = $title;
+        $this->titre = $titre;
         $this->datemodif = new \DateTime('now');
 
         return $this;

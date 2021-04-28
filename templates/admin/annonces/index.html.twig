@@ -769,7 +769,7 @@
 									<table class="table table-striped table-bordered">
 										<tr>
 											<th>Image</th>
-											<th>Title</th>
+											<th>Titre</th>
 											<th>Author</th>
 											<th>Date modif</th>
 											<th>Contenu</th>
@@ -779,12 +779,12 @@
                                         {% for a in annonces %}
 										<tr class="item-editable">
 											<td class="media-middle text-center">
-												<img src = "/images/annonces/{{a.image }}" class=" img_admin" alt="{{ a.title}}"/>
+												<img src = "/images/annonces/{{a.image }}" class=" img_admin" alt="{{ a.titre}}"/>
 											</td>
 											<td class="media-middle">
 												<h5>
 													<a href="{{ path('admin.annonce.edit',{id: a.id}) }}">
-										                {{ a.title }}
+										                {{ a.titre }}
 									                </a>
 												</h5>
 											</td>

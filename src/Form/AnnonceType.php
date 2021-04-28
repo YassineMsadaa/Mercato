@@ -16,7 +16,7 @@ class AnnonceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('titre')
             ->add('contenu')
             ->add('imageFile',FileType::class,['required' => false])
         ;

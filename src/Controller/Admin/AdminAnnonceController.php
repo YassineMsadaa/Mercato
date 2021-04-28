@@ -119,7 +119,7 @@ class AdminAnnonceController extends AbstractController{
      */
     public function tri_titre(PaginatorInterface $paginator,Request $request)
     {
-        $annonces = $paginator->paginate( $this->repository->trier('title','ASC'),
+        $annonces = $paginator->paginate( $this->repository->trier('titre','ASC'),
         $request->query->getInt('page', 1),
         4);
         return $this->render('admin/annonces/index.html.twig', compact('annonces') );
