@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('reclamation_delete', {'id': reclamation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+    <p class="footer_contact-form-submit topmargin_30">
+        <button type="submit" id="footer_contact_form_submit" name="contact_submit" class="theme_button color1 wide_button">Supprimer la reclamation</button>
+    </p>
+</form>

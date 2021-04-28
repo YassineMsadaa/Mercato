@@ -1,0 +1,42 @@
+{% extends 'index.html.twig' %}
+
+{% block title %}Hello RendezVousController!{% endblock %}
+
+
+
+{% block body %}
+
+<h1>Meeting list</h1>
+<div class="d-flex align-items-center"><input class="form-control" type="search" id="search" placeholder="Search by Date">
+    <a class="btn btn-primary" value="tri" href="{{ path('order') }}"><i class="fa fa-sort"></i></a>
+</div>
+
+
+
+
+
+
+
+
+
+<h4><table align="left" border="2">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Date</td>
+                    <td>Meet</td>
+                    <td>Description</td>
+                    <td>Email User 1</td>
+                    <td>Email User 2</td>
+                    <td>UPDATE</td>
+                    <td>DELETE</td>
+                </tr>
+            </thead>
+        <tbody id="all">
+        {% include 'rendez_vous/rendezvousajax.html.twig' %}
+        </tbody>
+        <tbody align="left" border="2" id="search">
+        </tbody>
+    </table>
+
+{% endblock %}

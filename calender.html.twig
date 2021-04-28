@@ -1,0 +1,60 @@
+{% extends 'basecalender.html.twig'%}
+{% block content %}
+<div class="add-listing">
+    <a class="btn btn-white btn-md" value="notif" href="{{ path('notificationrdv') }}"><i class="fa fa-bell"></i></a>
+</div>
+{% endblock %}
+{% block title %}Calender{% endblock %}
+
+{% block stylesheets %}
+<style>
+    #calendrier{
+        width:80%;
+        margin: auto;
+    }
+</style>
+
+{% endblock %}
+{% block calender %}
+    <div class="example-wrapper">
+        {% for message in app.flashes('message') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    <a href="{{ path('rendezvous') }}">show in table</a>
+<div id="calendrier"></div>
+{% endblock %}
+{% block javascripts %}
+<script>
+
+    window.onload=()=>{
+        let calendarElt=document.querySelector("#calendrier")
+        let calendar=new FullCalendar.Calendar(calendarElt,{
+            initialView: 'timeGridWeek',
+            headerToolbar:{
+                start:'prev,next today',
+                center:'title',
+                end:'dayGridMonth,timeGridWeek'
+            },
+            events:{{ data|raw }},
+            editable: true,
+            eventResizableFromStart: true
+        })
+        calendar.on('eventChange',(e)=>{
+            console.log(e)
+            let url=`/api/${e.event.id}/edit`
+            let donnes={
+                "meet":e.event.extendedProps.meet,
+                "date":e.event.start,
+               // "mail":e.event.extendedProps.mail,
+                "description":e.event.extendedProps.description
+            }
+            let xhr= new XMLHttpRequest()
+            xhr.open("PUT",url)
+            xhr.send(JSON.stringify(donnes))
+        })
+        calendar.render()
+    }
+</script>
+{% endblock %}
