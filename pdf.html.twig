@@ -1,4 +1,4 @@
-DEQZ{% block body %}
+{% block body %}
     <p>
 
         <a href=images/mm.jpg"><img src=images/mm.jpg"</a>
@@ -9,8 +9,8 @@ DEQZ{% block body %}
 <div class="col-md-12">
 <div class="card">
 <div class="card-header card-header-primary">
-    <h1 align="center" style="color:blue;">Events</h1>
-    <h2  align="center"style="color:orange;" > List of events </h2>
+    <h1 align="center" style="color:blue;">Users</h1>
+    <h2  align="center"style="color:orange;" > List of users </h2>
 </div>
 <!DOCTYPE html>
 <html>
@@ -44,41 +44,40 @@ DEQZ{% block body %}
 
 <table id="customers">
 
-    <tr>
-
-        <th>Id</th>
-
-        <th>title  </th>
-
-        <th>picture</th>
-
-        <th>type</th>
-
-        <th>description</th>
-
-        <th>localisation</th>
+    <tr >
+        <th scope="col">Id</th>
+        <th scope="col">Name </th>
+        <th scope="col">username</th>
+        <th scope="col">password</th>
+        <th scope="col">questions</th>
+        <th scope="col">answer</th>
+        <th scope="col">type</th>
+        <th scope="col">email adress</th>
 
 
+
+
+
+        <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
-    {% for user in event %}
 
-            <tr>
-                <td>{{ user.id }}</td>
+    {% for c in users %}
 
+    <tr>
+        <td>{{ c.id}}</td>
 
-                <td>{{ user.title }}</td>
-                <td>
-                    <img src="{{ asset('/images/'~user.picture) }}" >
-                </td>
+        <td>{{ c.name}}</td>
 
-                <td>{{ user.type }}</td>
-                <td>{{ user.description}}</td>
-                <td>{{ user.localisation }}</td>
+        <td>{{ c.username}}</td>
+        <td>{{ c.password}}</td>
+        <td>{{ c.s_ques}}</td>
+        <td>{{ c.answer}}</td>
+        <td>{{ c.type}}</td>
+        <td>{{ c.emailadresse}}</td>
 
-            </tr>
-
+        <td>
 
     {% endfor %}
     </tbody>

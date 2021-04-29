@@ -1,12 +1,14 @@
-{% extends 'index/index.html.twig' %}
-{% block title %}Edit Comment{% endblock %}
+{% extends 'basebackadmin.html.twig' %}
+
 
 {% block body %}
-    <h1>Edit Comment</h1>
+    <h1>Edit Users</h1>
 
-    {{ include('comment/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('user/formm.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('comment_index') }}">back to list</a>
 
-    {{ include('comment/_delete_form.html.twig') }}
+
+    <a href="{{path('lol1')}}">back to list</a>
+
+    {{ include('user/_delete_form.html.twig') }}
 {% endblock %}
