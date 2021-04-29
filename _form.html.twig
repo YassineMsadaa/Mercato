@@ -1,6 +1,4 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-<p class="footer_contact-form-submit topmargin_30">
-    <button type="submit" id="footer_contact_form_submit" name="contact_submit" class="theme_button color1 wide_button">Valider Reclamation</button>
-</p>
+    <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

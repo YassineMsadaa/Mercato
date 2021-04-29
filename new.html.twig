@@ -1,17 +1,11 @@
 {% extends 'index/index.html.twig' %}
 
-{% block title %}Faire Une Reclamation{% endblock %}
+{% block title %}New Comment{% endblock %}
 
 {% block body %}
-<div class="col-md-4 col-sm-6 text-center" ></div>
-    <h1>Ajouter Une Reclamation</h1>
-    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+    <h1>Create new Comment</h1>
 
+    {{ include('comment/_form.html.twig') }}
 
-    {{ include('reclamation/_form.html.twig') }}
-
-    <a href="{{ path('reclamation_index') }}">
-        </div>
+    <a href="{{ path('comment_index') }}">back to list</a>
 {% endblock %}
-
-

@@ -1,0 +1,257 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="add-listing">
+
+        <a class="btn btn-white btn-md" href="notificationuser"> <i class="fas fa-plus-circle"></i>Get Notifications</a>
+    </div>
+{% endblock %}
+{% block body %}
+
+
+    <!--=================================
+    banner -->
+
+    <section class="banner bg-holder bg-overlay-black-30" style="background-image: url(images/event.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="job-search-field job-search-field-02 search-under-banner">
+                        <div class="job-search-item">
+                            <form class="form-row basic-select-wrapper">
+                                <div class="form-group col-lg col-md-6">
+                                    <div class="form-group-search">
+                                        <label>Event Title</label>
+                                        <div class="d-flex align-items-center"><input class="form-control" type="search" id="search" placeholder="Title"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    banner -->
+
+    <!--=================================
+blog -->
+
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8" id="search"></div>
+                <div class="col-lg-8" id="all">
+                    {% for e in evenement %}
+                        <div class="blog-post text-center mt-4">
+                            <div class="blog-post-image">
+                                <img class="img-fluid" src="images/{{ e.picture }}" alt="">
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-details">
+
+                                    <div class="blog-post-title">
+                                        <p class="mb-0">{{ e.title }}</p>
+                                    </div>
+                                    <div class="blog-post-description">
+                                        <p class="mb-0">{{ e.type }}</p>
+                                    </div>
+                                    <div class="blog-post-description">
+                                        <h4><a href="{{ path('eventinfo',{'id':e.id})}}">More Details</a></h4>
+                                    </div>
+                                </div>
+                                <div class="blog-post-footer">
+                                    <div class="blog-post-time">
+                                        <a href="#"><i class="far fa-clock"></i>{{ e.dateAt|date('Y-m-d H:i:s') }}</a>
+                                    </div>
+                                    <div class="blog-post-author">
+                                        <span>By<a href="#"><img src="images/{{ e.picture }}" alt="">Company</a></span>
+                                    </div>
+
+                                    <div class="blog-post-share">
+                                        <div class="share-box">
+                                            <a href="#"> <i class="fas fa-share-alt"></i><span class="pl-2">Share</span></a>
+                                            <ul class="list-unstyled share-box-social">
+                                                <li> <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/hand.calsp"><i class="fab fa-facebook-f"></i></a> </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <a class="js-like" href="{{path('like',{'uid':1,'eid':e.id})}}">
+                                        <i class="fas fa-thumbs-up"></i>
+                                        <span class="js-label">Likes : </span>
+
+                                        <span class="js-like">{{ e.eventlikes | length }}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="blog-sidebar">
+
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h5>About The Events</h5>
+                            </div>
+                            <p>The concept of corporate event encompasses company dinners, meetings, conferences, symposiums and even recreational activities </p>
+                            <ol class="pl-3">
+                                <li class="mb-2">Events, meetings and other activities are very effective communication tools both at an internal and external level.</li>
+                                <li class="mb-2">They enable and foster interpersonal relationships</li>
+                                <li class="mb-2">They reward achievements and recognize success</li>
+                                <li class="mb-2">They improve motivation and working mood.</li>
+                                <li class="mb-2">They promote business and sales</li>
+                            </ol>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-title widget-collapse">
+                                <h1>Fiter By</h1>
+                                <a class="ml-auto" data-toggle="collapse" href="#dateposted" role="button" aria-expanded="false" aria-controls="dateposted"> <i class="fas fa-chevron-down"></i> </a>
+                            </div>
+                            <div class="collapse show" id="dateposted">
+                                {{ form_start(form) }}
+                                <h4> Types </h4>
+                                {{ form_row(form.type) }}
+                                <button type="submit" class="btn btn-primary" >Filtrer</button>>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h5>Recent Events</h5>
+                            </div>{% set i =0 %}
+                            {% for e in evenement %}
+                                {% if i<3 %}
+                                    {% set i = i +1 %}
+                                    <div class="d-flex mb-3 align-items-start">
+                                        <div class="avatar avatar-xl">
+                                            <img class="img-fluid" src="images/{{ e.picture }}" alt="">
+                                        </div>
+                                        <div class="ml-3 recent-posts">
+                                            <a href="{{ path('eventinfo',{'id':e.id})}}">{{ e.title }}</a>
+                                            <a class="d-block font-sm mt-1 text-light" href="#">{{ e.dateAt|date('Y-m-d H:i:s') }}</a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h5>Subscribe & Follow</h5>
+                            </div>
+                            <div class="social">
+                                <ul class="list-unstyled">
+                                    <li class="facebook">
+                                        <a class="text-uppercase" href="https://www.facebook.com/hand.calsp"> <i class="fab fa-facebook-f mr-3"></i>Facebook</a>
+                                        <a class="follow ml-auto" href="https://www.facebook.com/hand.calsp">Like </a>
+                                    </li>
+                                    <li class="instagram">
+                                        <a class="text-uppercase" href="https://www.instagram.com/hand_clasp/?hl=en"> <i class="fab fa-instagram mr-3"></i>instagram</a>
+                                        <a class="follow ml-auto" href="https://www.instagram.com/hand_clasp/?hl=en">Follow </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+    blog -->
+
+{% endblock %}
+{% block search %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        function onClickBtnLike(event){
+            event.preventDefault();
+            const  url = this.href;
+            const  spanCount = this.querySelectorAll('span.js-like');
+            axios.get(url).then(function (response){
+                $("span.js-like").text(response.data.likes);
+                console.log(response);
+            })
+        }
+        document.querySelectorAll('a.js-like').forEach(function (link){
+            link.addEventListener('click',onClickBtnLike);
+        })
+    </script>
+
+<script>
+    $("#search").keyup(function(e){
+        var value = $(this).val();
+        $.ajax({
+            url : "{{ path('searchevenement') }}",
+            data: {
+                'searchValue' : value
+            },
+            type: "POST",
+            success : function(response)
+            {
+                if(response){
+
+                    $(' div#search').empty();
+
+                    $.each(response, function(index, value) {
+                        $('div#search').append(
+                            ' <div class="blog-post text-center mt-4">'+
+                                '<div class="blog-post-image">'+
+                                    '<img class="img-fluid" src="images/'+ value.picture +'" alt="">'+
+                                '</div>'+
+                            '<div class="blog-post-content">'+
+                                '<div class="blog-post-details">'+
+
+                                    '<div class="blog-post-title">'+
+                                        '<p class="mb-0">'+value.title +'</p>'+
+                                    '</div>'+
+                                    '<div class="blog-post-description">'+
+                                        '<p class="mb-0">'+value.type +'</p>'+
+                                    '</div>'+
+
+                                '</div>'+
+                            '</div>'+
+
+                            '<div class="blog-post-description">'+
+                                '<a href="eventinfo'+value.id+'">More Details</a>'+
+                            '</div>'+
+
+                            '</div>'
+
+
+
+                        );
+                    });
+                    $('div#all').hide();
+                }else
+                {
+                    $('div#all').show();
+                    $('div#search').empty();
+                    $('div#search').fadeIn('fast');
+                }
+
+
+            }
+
+
+        });
+
+    });
+
+
+
+
+</script>
+{% endblock %}
+

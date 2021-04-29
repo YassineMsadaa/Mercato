@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+    <!--=================================
+inner banner -->
+    <div class="header-inner bg-light text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-primary">Event</h2>
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="evenementsociete">Home</a></li>
+                        <li class="breadcrumb-item active"> <i class="fas fa-chevron-right"></i> <span>Event</span></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=================================
+    inner banner -->
+
+
+
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="employers-list border">
+                        <div class="employers-list-logo">
+                            <img class="img-fluid" src="images/{{ evenement.picture }}" alt="">
+                        </div>
+                        <div class="employers-list-details">
+                            <div class="employers-list-info">
+                                <div class="employers-list-title">
+                                    <h5 class="mb-0">{{ evenement.title }}</h5>
+                                </div>
+                                <div class="employers-list-option">
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-map-marker-alt pr-1"></i>{{ evenement.localitation }}</li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li><i class=""></i>Organized By :{{ evenement.idSociete }}</li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li><i class="far fa-check-circle font-md text-primary mr-2"></i>{{ evenement.type }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="border p-4 mt-4 mt-md-5">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 mb-4">
+                                <div class="d-flex">
+                                    <i class="font-xll text-primary align-self-center flaticon-binoculars"></i>
+                                    <div class="feature-info-content pl-3">
+                                        <label class="mb-1">Viewed</label>
+                                        <span class="mb-0 font-weight-bold d-block text-dark">{{ evenement.viewed }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 mb-4">
+                                <div class="d-flex">
+                                    <i class="font-xll text-primary align-self-center flaticon-placeholder"></i>
+                                    <div class="feature-info-content pl-3">
+                                        <label class="mb-1">Locations</label>
+                                        <span class="mb-0 font-weight-bold d-block text-dark">{{ evenement.localitation }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 mb-4">
+                                <div class="d-flex">
+                                    <i class="font-xll text-primary align-self-center flaticon-list"></i>
+                                    <div class="feature-info-content pl-3">
+                                        <label class="mb-1">Type</label>
+                                        <span class="mb-0 font-weight-bold d-block text-dark">{{ evenement.type }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mt-4 mt-md-5 mb-4 mb-md-5">
+                        <h5 class="mb-3 mb-md-4">Description</h5>
+                        <p>{{ evenement.description }}</p>
+
+                    </div>
+                    <hr>
+
+                </div>
+                <!--=================================
+                sidebar -->
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="sidebar mb-0">
+                        <div class="widget">
+                            <div class="company-detail-meta justify-content-start">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <div class="share-box">
+                                            <a href="#"> <i class="fas fa-share-alt"></i><span class="pl-2">Share</span></a>
+                                            <ul class="list-unstyled share-box-social">
+                                                <li> <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/hand.calsp"><i class="fab fa-facebook-f"></i></a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{path('pdf',{'id':evenement.id})}}"><i class="fas fa-file-pdf"></i><span class="pl-2">Print PDF</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="widget">
+                            <div class="widget-title">
+                                <a class="btn btn-primary btn-block" href="{{ path('participant_e',{'id':evenement.id})}}"><i class="far fa-paper-plane"></i>Participate</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--=================================
+                sidebar -->
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
